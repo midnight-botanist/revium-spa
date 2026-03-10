@@ -1,0 +1,63 @@
+Searchable List Exercise
+-----
+
+Questions / Scope
+	- TypeScript?
+	- How large is the dataset?
+	- Will we need serverside components? eg Nextjs vs Vite SPA?
+		Routing enables url queries or sharable results / SEO indexing
+		Abstract API layer for tokens/security
+		Caching for performance / revalidation
+	- Is our API throttled etc, do we need keys, do we use a json file?
+	- Do we need to follow a design, or are we just building functionality, tech only?
+
+
+Implementation Steps:
+
+	1. Render data
+		Load data.json
+			Vanilla async or tanstack query?
+
+		Render list
+
+	2. Add controlled search input
+		ShadCN component
+
+	3. Debounce the search
+		useEffect
+		setTimeout
+
+			User types
+			Query changes
+			Effect runs
+			Timer waits 300ms
+			debouncedQuery updates
+			Filtering happens
+
+		Best practice would be to extract debounce into a reusable hook
+
+	4. Paginate results
+		Pagination vs infinite scroll?
+
+	5. Edge cases / Error boundaries
+		Empty state / loading polish
+		Pagination invalid after search
+		Case insensitivity in query / trim spaces
+		Empty query
+		Missing data fields in data
+		Network errors
+		Duplicate keys in rendering
+			eg key={item.id} instead of index to avoid reconcilliation issues
+		Large datasets
+		Debounce timers, singleton pattern to avoid dupes
+
+
+	6. Make UI pretty (if we have time)
+		Accessibility
+
+
+Consider:
+	- Where to add tests?
+		Filtering
+		Debounce
+		Pagination
